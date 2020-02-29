@@ -13,11 +13,11 @@ class RpgViewSet(ModelViewSet):
 
     @action(detail=True)
     def achievements(self, request, pk=None):
-        achievements = Achievement.objects.filter(rpg_id=pk)
+        curr_rpg_achievements = Achievement.objects.filter(rpg_id=pk)
 
         context = {
             'request': request
         }
 
-        achievement_serializer = AchievementSerializer(achievements, many=True, context=context)
-        return Response(achievement_serializer.data)
+        serializer = AchievementSerializer(curr_rpg_achievements, many=True, context=context)
+        return Response(serializer.data)

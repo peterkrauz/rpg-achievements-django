@@ -1,0 +1,1 @@
+web: gunicorn rpg_achievements.wsgi --log-file -
